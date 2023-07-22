@@ -335,6 +335,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
             break;
+        case KC_CAPSLOCK:
+            if (record->event.pressed) {
+                caps_lock_on = !caps_lock_on;
+                if (caps_lock_on) {
+                    register_code(KC_CAPSLOCK);
+                } else {
+                    unregister_code(KC_CAPSLOCK);
+                }
+            }
+            return false;
+            break;
         case KC_UNDO:
             if (record->event.pressed) {
                 register_mods(mod_config(MOD_LCTL));
